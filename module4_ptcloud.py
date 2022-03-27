@@ -42,7 +42,7 @@ pts_z = np.vstack(pts[:,2])
 max_d = 1500
 d = np.linspace(min_d/1000,max_d/1000,num=3)
 psl = np.concatenate([pts+d_*pt_normal for d_ in d])
-np.savetxt('../output/psl.csv', psl, delimiter=',')
+#np.savetxt('../output/psl.csv', psl, delimiter=',')
 
 # =============================================================================
 # """ draw max/min boundary of psl"""
@@ -89,7 +89,7 @@ pts = np.hstack((pts_x,pts_y,pts_z))
 pts = np.repeat(pts,len(d),0)
 final_pts = pts[list(qualified_psl_index)]
 final_pts_normal = final_pts-final_psl
-np.savetxt('../output/final_pts_normal.csv', final_pts_normal, delimiter=',')
+#np.savetxt('../output/final_pts_normal.csv', final_pts_normal, delimiter=',')
 ## Plot Object & satisfied psls
 # =============================================================================
 ax.scatter(final_psl[:,0],final_psl[:,1],final_psl[:,2],color='blue')

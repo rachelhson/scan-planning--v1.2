@@ -56,8 +56,8 @@ pt_normal = np.delete(pt_normal,nonexist_points,0)
 pts = np.delete(pts,nonexist_points,0)
 print(f'after removing the bottom # of pts : {len(pts)}')
 """output the final sample object """ 
-np.savetxt('../output/sampled_points.csv', pts, delimiter=',')
-np.savetxt('../output/pt_normal.csv', pt_normal, delimiter=',')
+#np.savetxt('../output/sampled_points.csv', pts, delimiter=',')
+#np.savetxt('../output/pt_normal.csv', pt_normal, delimiter=',')
 # number_of_points = how many points are sampled from the triangle surface
 #o3d.visualization.draw_geometries([pcd])
 
