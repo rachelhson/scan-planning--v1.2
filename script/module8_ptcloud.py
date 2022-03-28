@@ -15,8 +15,7 @@ import time
 
 
 start_time = time.time()
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+
 
 lowscore_index = np.where(score_ < 1000)
 
@@ -26,7 +25,7 @@ hard_to_scan_x = np.vstack(pts[lowscore_index][:,0])
 hard_to_scan_y = np.vstack(pts[lowscore_index][:,1])
 hard_to_scan_z = np.vstack(pts[lowscore_index][:,2])
 hard_to_scan = np.hstack((hard_to_scan_x,hard_to_scan_y,hard_to_scan_z))
-np.savetxt('../output/hard_to_scan.csv', hard_to_scan, delimiter=',')
+#np.savetxt('../output/hard_to_scan.csv', hard_to_scan, delimiter=',')
 
 lowscore_count = {}
 for psl in satisfied.keys():
@@ -43,8 +42,11 @@ max_lowpoint_index = np.argmax(values)
 
 print(f' PSL point index {max_lowpoint_index} can capture {np.amax(values)} object points among total {len(lowscore_index[0])}low score points')
 # plot the psl that capture low score points
-ax.scatter(final_psl[max_lowpoint_index][0],final_psl[max_lowpoint_index][1],final_psl[max_lowpoint_index][2],color='green')    
+#fig = plt.figure()
+#ax = fig.add_subplot(111, projection='3d')
+#ax.scatter(final_psl[max_lowpoint_index][0],final_psl[max_lowpoint_index][1],final_psl[max_lowpoint_index][2],color='green')
 #plt.show()
 
-print( f'processing tiem (module8) {time.time()-start_time} second') 
+print( f'processing tiem (module8) {time.time()-start_time:.2f} second')
+
 
