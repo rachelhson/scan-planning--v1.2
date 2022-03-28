@@ -86,7 +86,9 @@ for j in range(len(final_psl)):
     cosia = cosia.round(decimals=4)
     ia = np.rad2deg(np.arccos(cosia))
     #print(ia)
-    nonocclu_index = np.where(ia<90)[0]
+    dist2_ = distance_2d(rayx, rayy)
+    v_range = distance_2d(pslx, psly)
+    nonocclu_index = np.where((ia < 90) & (dist2_ < v_range))[0]
     visible[j]=nonocclu_index  
     
     """ 2D """
