@@ -28,9 +28,9 @@ first_scan_index = max_lowpoint_index
 first_scan = final_psl[first_scan_index]
 ## plot the first scan
 ax.scatter(first_scan[0],first_scan[1],first_scan[2],color='green')  
-np.savetxt('../output/first_scan.csv', first_scan[None,:], delimiter=',')
-np.savetxt('../output/sat_first.csv', pts[satisfied[first_scan_index]], delimiter=',')
-np.savetxt('../output/visible_first.csv', pts[visible[first_scan_index]], delimiter=',')
+#np.savetxt('../output/first_scan.csv', first_scan[None,:], delimiter=',')
+#np.savetxt('../output/sat_first.csv', pts[satisfied[first_scan_index]], delimiter=',')
+#np.savetxt('../output/visible_first.csv', pts[visible[first_scan_index]], delimiter=',')
 ## plan the second scan 
 ## set range among fninal_psl in the range 
 min_next_range = 2200 # mm 
@@ -81,8 +81,8 @@ else:
 second_psl = final_psl[second_index]    
 np.savetxt('../output/second_scan.csv', second_psl[None,:], delimiter=',')
 print(f'overlap ratio = {overlap_length[second_index]/len(satisfied[first_scan_index])}')
-np.savetxt('../output/sat_second.csv', pts[satisfied[second_index]], delimiter=',')
-np.savetxt('../output/visible_second.csv', pts[visible[second_index]], delimiter=',')
+#np.savetxt('../output/sat_second.csv', pts[satisfied[second_index]], delimiter=',')
+#np.savetxt('../output/visible_second.csv', pts[visible[second_index]], delimiter=',')
 ## plot second-scan possible positions 
 ax.scatter(second_psl[0],second_psl[1],second_psl[2], color='blue')
 ax.scatter(pts[:,0],pts[:,1],pts[:,2],color='grey')
@@ -133,9 +133,9 @@ third_index = max(overlap_length, key = overlap_length.get)
 third_psl = final_psl[third_index]    
 
 print(f'overlap ratio = {overlap_length[third_index]/len(satisfied[second_index])}')
-np.savetxt('../output/third_scan.csv', third_psl[None,:], delimiter=',')
-np.savetxt('../output/sat_third.csv', pts[satisfied[third_index]], delimiter=',')
-np.savetxt('../output/visible_third.csv', pts[visible[third_index]], delimiter=',')
+#np.savetxt('../output/third_scan.csv', third_psl[None,:], delimiter=',')
+#np.savetxt('../output/sat_third.csv', pts[satisfied[third_index]], delimiter=',')
+#np.savetxt('../output/visible_third.csv', pts[visible[third_index]], delimiter=',')
 ## plot third-scan possible positions 
 ax.scatter(third_psl[0],third_psl[1],third_psl[2], color='purple')
 ax.scatter(pts[:,0],pts[:,1],pts[:,2],color='grey')
@@ -182,10 +182,10 @@ for i in forth_psl_index_list:
 
 forth_index = max(overlap_length, key = overlap_length.get)
 forth_psl = final_psl[forth_index]    
-np.savetxt('../output/forth_scan.csv', forth_psl[None,:], delimiter=',')
+#np.savetxt('../output/forth_scan.csv', forth_psl[None,:], delimiter=',')
 print(f'overlap ratio = {overlap_length[forth_index]/len(satisfied[third_index])}')
-np.savetxt('../output/sat_forth.csv', pts[satisfied[forth_index]], delimiter=',')
-np.savetxt('../output/visible_forth.csv', pts[visible[forth_index]], delimiter=',')
+#np.savetxt('../output/sat_forth.csv', pts[satisfied[forth_index]], delimiter=',')
+#np.savetxt('../output/visible_forth.csv', pts[visible[forth_index]], delimiter=',')
 ## plot forth-scan possible positions 
 ax.scatter(forth_psl[0],forth_psl[1],forth_psl[2], color='orange')
 ax.scatter(pts[:,0],pts[:,1],pts[:,2],color='grey')
@@ -231,11 +231,11 @@ for i in fifth_psl_index_list:
 
 fifth_index = max(overlap_length, key = overlap_length.get)
 fifth_psl = final_psl[fifth_index]    
-np.savetxt('../output/fifth_scan.csv', fifth_psl[None,:], delimiter=',')
+#np.savetxt('../output/fifth_scan.csv', fifth_psl[None,:], delimiter=',')
 print(f'overlap ratio = {overlap_length[fifth_index]/len(satisfied[forth_index])}')
-np.savetxt('../output/sat_fifth.csv', pts[satisfied[fifth_index]], delimiter=',')
-np.savetxt('../output/sat_fifth.csv', pts[satisfied[fifth_index]], delimiter=',')
-np.savetxt('../output/visible_fifth.csv', pts[visible[fifth_index]], delimiter=',')
+#np.savetxt('../output/sat_fifth.csv', pts[satisfied[fifth_index]], delimiter=',')
+#np.savetxt('../output/sat_fifth.csv', pts[satisfied[fifth_index]], delimiter=',')
+#np.savetxt('../output/visible_fifth.csv', pts[visible[fifth_index]], delimiter=',')
 ## plot forth-scan possible positions 
 ax.scatter(fifth_psl[0],fifth_psl[1],fifth_psl[2], color='red')
 ax.scatter(pts[:,0],pts[:,1],pts[:,2],color='grey')
@@ -281,10 +281,10 @@ for i in sixth_psl_index_list:
 
 sixth_index = max(overlap_length, key = overlap_length.get)
 sixth_psl = final_psl[sixth_index]    
-np.savetxt('../output/sixth_scan.csv', sixth_psl[None,:], delimiter=',')
+#np.savetxt('../output/sixth_scan.csv', sixth_psl[None,:], delimiter=',')
 print(f'overlap ratio = {overlap_length[sixth_index]/len(satisfied[fifth_index])}')
-np.savetxt('../output/sat_sixth.csv', pts[satisfied[sixth_index]], delimiter=',')
-np.savetxt('../output/visible_sixth.csv', pts[satisfied[sixth_index]], delimiter=',')
+##np.savetxt('../output/sat_sixth.csv', pts[satisfied[sixth_index]], delimiter=',')
+#np.savetxt('../output/visible_sixth.csv', pts[satisfied[sixth_index]], delimiter=',')
 ## plot sixth-scan possible positions 
 ax.scatter(sixth_psl[0],sixth_psl[1],sixth_psl[2], color='black')
 ax.scatter(pts[:,0],pts[:,1],pts[:,2],color='grey')
@@ -301,10 +301,10 @@ else:
 
 remove = np.concatenate((satisfied[first_scan_index],satisfied[second_index],satisfied[third_index],satisfied[forth_index],satisfied[fifth_index],satisfied[sixth_index]))
 removed = np.delete(pts,remove,0)
-np.savetxt('../output/non_qualified.csv', removed, delimiter=',')
+#np.savetxt('../output/non_qualified.csv', removed, delimiter=',')
 visible_remove = np.concatenate((visible[first_scan_index],visible[second_index],visible[third_index],visible[forth_index],visible[fifth_index],satisfied[sixth_index]))
 removed = np.delete(pts,visible_remove,0)
-np.savetxt('../output/non_qualified.csv', removed, delimiter=',')
+#np.savetxt('../output/non_qualified.csv', removed, delimiter=',')
 
 # =============================================================================
 # ## plan seventh scan

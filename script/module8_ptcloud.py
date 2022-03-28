@@ -15,7 +15,8 @@ import time
 
 
 start_time = time.time()
-
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
 
 lowscore_index = np.where(score_ < 1000)
 
@@ -42,8 +43,7 @@ max_lowpoint_index = np.argmax(values)
 
 print(f' PSL point index {max_lowpoint_index} can capture {np.amax(values)} object points among total {len(lowscore_index[0])}low score points')
 # plot the psl that capture low score points
-#fig = plt.figure()
-#ax = fig.add_subplot(111, projection='3d')
+
 #ax.scatter(final_psl[max_lowpoint_index][0],final_psl[max_lowpoint_index][1],final_psl[max_lowpoint_index][2],color='green')
 #plt.show()
 
