@@ -56,4 +56,4 @@ dist= o3d.geometry.PointCloud.compute_nearest_neighbor_distance(downpcd)
 mu = np.average(dist)
 var = np.var(dist)
 print(f'spacing average: {mu}, variance: {var}') #mm
-print( f'processing time (module2) {time.time()-start_time} second')
+print( f'processing time (module2) {time.time()-start_time:.2f} second')

@@ -192,4 +192,4 @@ res_deg = res_dic[np.max(list(valid_res))]
 # print(valid_res)
 # print(list(valid_res))
 print(f"result of module 1 | res : {valid_res} | FoV :{fov} | chosen res: {res_deg}")
-print(f'processing time (module1) {time.time() - start_time} second')
+print(f'processing time (module1) {time.time() - start_time:.2f} second')
