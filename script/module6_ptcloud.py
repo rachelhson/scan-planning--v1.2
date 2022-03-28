@@ -1,8 +1,7 @@
 """ For each PSL check which points can capture"""
 
-from module1 import hor_step, ver_step,qr_hr,qr_vr
+from module1 import res_deg,qr_hr,qr_vr
 from module2 import pts, pt_normal
-from module4_ptcloud import final_psl
 from module4_ptcloud import final_psl
 
 import numpy as np
@@ -11,8 +10,8 @@ from mpl_toolkits.mplot3d import Axes3D
 import time
 
 start_time = time.time()
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
 
 
 def dot_product(psl_x,psl_y,psl_z,sc_x,sc_y,sc_z):
@@ -115,10 +114,10 @@ for j in range(len(final_psl)):
     
     """ vertical quality check"""
     gamma = gamma_f(pslx,scx,psly,scy,pslz,scz)
-    dmax_ver = (qr_vr/1000)*sin_f(90+gamma-ver_step)/sin_f(ver_step)
+    dmax_ver = (qr_vr/1000)*sin_f(90+gamma-res_deg)/sin_f(res_deg)
     
     """ horizontal quality check"""
-    dmax_hor = (qr_hr/1000)*sin_f(ia+90-hor_step)/sin_f(hor_step) 
+    dmax_hor = (qr_hr/1000)*sin_f(ia+90-res_deg)/sin_f(res_deg)
         
     deltax = pslx-scx
     deltay = psly-scy
@@ -135,4 +134,4 @@ for j in range(len(final_psl)):
     
 
     #ax.scatter(pts[l_index][:,0],pts[l_index][:,1],pts[l_index][:,2])
-print( f'processing tiem (module6) {time.time()-start_time} second')   
+print( f'processing tiem (module6) {time.time()-start_time:.2f} second')
