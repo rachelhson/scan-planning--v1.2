@@ -10,8 +10,8 @@ from mpl_toolkits.mplot3d import Axes3D
 import time
 
 start_time = time.time()
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
 
 
 def dot_product(psl_x,psl_y,psl_z,sc_x,sc_y,sc_z):
