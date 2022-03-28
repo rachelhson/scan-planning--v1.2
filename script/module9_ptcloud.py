@@ -1,6 +1,4 @@
 """11-29-2020 Find next best view"""
-
-
 from module2 import pts
 from module4_ptcloud import final_psl
 from module4_ptcloud import final_psl, dist_2d
@@ -26,7 +24,7 @@ fig = plt.figure()
 ax = plt
 first_scan_index = max_lowpoint_index
 first_scan = final_psl[first_scan_index]
-## plot the first scan
+"""plot first scan location"""
 ax.scatter(first_scan[0],first_scan[1],first_scan[2],color='green')  
 #np.savetxt('../output/first_scan.csv', first_scan[None,:], delimiter=',')
 #np.savetxt('../output/sat_first.csv', pts[satisfied[first_scan_index]], delimiter=',')
@@ -79,7 +77,7 @@ else:
     second_index = second_psl_index 
         
 second_psl = final_psl[second_index]    
-np.savetxt('../output/second_scan.csv', second_psl[None,:], delimiter=',')
+#np.savetxt('../output/second_scan.csv', second_psl[None,:], delimiter=',')
 print(f'overlap ratio = {overlap_length[second_index]/len(satisfied[first_scan_index])}')
 #np.savetxt('../output/sat_second.csv', pts[satisfied[second_index]], delimiter=',')
 #np.savetxt('../output/visible_second.csv', pts[visible[second_index]], delimiter=',')

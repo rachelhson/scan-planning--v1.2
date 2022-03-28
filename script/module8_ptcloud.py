@@ -5,14 +5,10 @@ from module2 import pts, pt_normal
 from module4_ptcloud import final_psl
 from module7_ptcloud import score_,mu,std
 from module6_ptcloud import satisfied ## contains for each psl : satisfied point cloud 
-
-
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import time
-
-
 
 start_time = time.time()
 fig = plt.figure()
