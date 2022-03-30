@@ -1,6 +1,10 @@
 # scan-planning--v1.2
 
+How to run this program
+- run `/script/module9_ptcloud.py`
+
 1. Input
+
 2. module1
 3. module2
 4. module4

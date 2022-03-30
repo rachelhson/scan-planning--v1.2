@@ -69,8 +69,8 @@ print(f'1 scan index: {first_scan_index}')
 print(f'2 scan : {second_scan}')
 print(f'2 scan index: {second_index}')
 
-print(f'2 scan : {third_scan}')
-print(f'2 scan index: {third_index}')
+print(f'3 scan : {third_scan}')
+print(f'3 scan index: {third_index}')
 
 scan_i = 3
 pre_scan = third_scan
