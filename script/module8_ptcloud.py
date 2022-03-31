@@ -24,7 +24,7 @@ def getlow_score_criteria(mu,std):
     return low_score_criteria
 
 low_score_criteria = getlow_score_criteria(mu,std)
-print(f"low_score_criteria is {low_score_criteria}")
+print(f"low_score_criteria is {low_score_criteria:.2f}")
 lowscore_index = np.where(score_ < low_score_criteria)
 
 ax.scatter(pts[lowscore_index][:,0], pts[lowscore_index][:,1], pts[lowscore_index][:,2], color ='red')

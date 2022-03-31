@@ -12,8 +12,8 @@ qr_vr= qr*2
 #if the site is limited
 d_min = 1000 #mm
 d_site = 1500 #mm
-h_site = 1500 #mm
-h_min = 700 #mm
+h_site = 1600 #mm
+h_min = 1200 #mm
 
 h_mid = (h_min+h_site)/2
 
