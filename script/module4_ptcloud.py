@@ -3,6 +3,8 @@
 from Input import d_min, d_site,h_site, h_min
 from module2 import pts, pt_normal
 import numpy as np
+import matplotlib
+#matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import time 
