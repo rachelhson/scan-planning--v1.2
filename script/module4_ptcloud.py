@@ -3,6 +3,8 @@
 from Input import d_min, d_site,h_site, h_min
 from module2 import pts, pt_normal
 import numpy as np
+import matplotlib
+#matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import time 
@@ -52,15 +54,16 @@ pts = np.repeat(pts,len(d),0)
 final_pts = pts[list(qualified_psl_index)]
 final_pts_normal = final_pts-final_psl
 #np.savetxt('../output/final_pts_normal.csv', final_pts_normal, delimiter=',')
-## Plot Object & satisfied psls
-# fig = plt.figure()
-# ax = fig.add_subplot(111, projection='3d')
-# # =============================================================================
-# ax.scatter(final_psl[:,0],final_psl[:,1],final_psl[:,2],color='blue')
-# ax.scatter(pts[:,0],pts[:,1],pts[:,2],color='grey')
-# # =============================================================================
-# plt.title('final_psl - considered site condition')
-# plt.show()
+
+"""Plot Object & satisfied psls"""
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+# =============================================================================
+ax.scatter(final_psl[:,0],final_psl[:,1],final_psl[:,2],color='blue')
+ax.scatter(pts[:,0],pts[:,1],pts[:,2],color='grey')
+# =============================================================================
+plt.title('final_psl - considered site condition')
+plt.show()
 print( f'The number of final_psl is {len(final_psl)}')
 print( f'processing time (module4) {time.time()-start_time:.2f} second')
 

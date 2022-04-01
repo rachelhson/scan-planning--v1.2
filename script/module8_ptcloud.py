@@ -14,14 +14,25 @@ start_time = time.time()
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-lowscore_index = np.where(score_ < 1000)
+## define low_score criteria : low_score_criteria
+def getlow_score_criteria(mu,std):
+    low_score_criteria = mu-2*std# (30%)
+    if low_score_criteria < 0:
+        low_score_criteria = mu-std #(60%)
+    else:
+        low_score_criteria = low_score_criteria
+    return low_score_criteria
+
+low_score_criteria = getlow_score_criteria(mu,std)
+print(f"low_score_criteria is {low_score_criteria:.2f}")
+lowscore_index = np.where(score_ < low_score_criteria)
 
 ax.scatter(pts[lowscore_index][:,0], pts[lowscore_index][:,1], pts[lowscore_index][:,2], color ='red')
 ax.scatter(pts[:,0], pts[:,1], pts[:,2], color ='grey', alpha = 0.01)
-hard_to_scan_x = np.vstack(pts[lowscore_index][:,0])
-hard_to_scan_y = np.vstack(pts[lowscore_index][:,1])
-hard_to_scan_z = np.vstack(pts[lowscore_index][:,2])
-hard_to_scan = np.hstack((hard_to_scan_x,hard_to_scan_y,hard_to_scan_z))
+#hard_to_scan_x = np.vstack(pts[lowscore_index][:,0])
+#hard_to_scan_y = np.vstack(pts[lowscore_index][:,1])
+#hard_to_scan_z = np.vstack(pts[lowscore_index][:,2])
+#hard_to_scan = np.hstack((hard_to_scan_x,hard_to_scan_y,hard_to_scan_z))
 #np.savetxt('../output/hard_to_scan.csv', hard_to_scan, delimiter=',')
 
 lowscore_count = {}
@@ -41,7 +52,7 @@ print(f' PSL point index {max_lowpoint_index} can capture {np.amax(values)} obje
 # plot the psl that capture low score points
 
 #ax.scatter(final_psl[max_lowpoint_index][0],final_psl[max_lowpoint_index][1],final_psl[max_lowpoint_index][2],color='green')
-#plt.show()
+plt.show()
 
 print( f'processing tiem (module8) {time.time()-start_time:.2f} second')
 
