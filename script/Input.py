@@ -3,7 +3,7 @@ import open3d as o3d
 
 ## Input - model and quality requirement
 model = 'exp1_str.ply'
-qr = 5 # mm  quality requirement
+qr = 3 # mm  quality requirement
 
 ## quality specification
 qr_hr= qr

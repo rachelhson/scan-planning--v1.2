@@ -5,6 +5,7 @@ from Input import model, qr_hr, qr_vr, d_min, d_site, h_site, h_min, h_mid
 import time
 
 start_time = time.time()
+
 """============================================================================"""
 mesh = o3d.io.read_triangle_mesh(model)
 mesh.compute_vertex_normals()
@@ -24,14 +25,12 @@ res_dic = {1: 0.009, 2: 0.018, 3: 0.035, 4: 0.044, 5: 0.070, 6: 0.088, 7: 0.141,
 
 """ point-to-point analysis on the maximum dimension of the object """
 
-
 def rad(deg):
     rad_ = np.deg2rad(deg)
     return rad_
 
 
 """ fov check """
-
 # Fov selection
 min_fov = 45  # degree
 max_fov = 90  # degree
