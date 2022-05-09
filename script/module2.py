@@ -16,7 +16,7 @@ qr = qr_hr
 #mesh  = o3d.io.read_triangle_mesh(model)#read 3D model
 
 #Visualize Wireframe
-#o3d.visualization.draw_geometries([mesh], mesh_show_wireframe = True)
+#o3d.visualization.draw_geometries([mesh], mesh_show_wireframe = False)
 # print(len(np.asarray(mesh.vertices)))# numb of vertices
 # print(len(np.asarray(mesh.triangles)))# numb of triangles
 # print(np.asarray(mesh.triangle_normals)) # get normal vectors of each mesh surface
@@ -24,7 +24,7 @@ qr = qr_hr
 num_sample = len(mesh.vertices)*2
 #print(f'number of sampling points : {num_sample}')
 pcd = mesh.sample_points_uniformly(number_of_points=num_sample)
-point_cloud = qr*2/1000 #m
+point_cloud = qr*9/1000 #m sampling interval
 print(f"Downsample the point cloud with a spacing of {point_cloud*1000}mm")
 downpcd = pcd.voxel_down_sample(voxel_size=point_cloud)
 #print(f'number of downsample points : {len(downpcd.points)}')
