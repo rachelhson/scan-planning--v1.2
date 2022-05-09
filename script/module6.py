@@ -2,7 +2,7 @@
 
 from module1 import res_deg,qr_hr,qr_vr
 from module2 import pts, pt_normal
-from module4_ptcloud import final_psl
+from module4 import final_psl
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -136,4 +136,4 @@ for j in range(len(final_psl)):
     
 
     #ax.scatter(pts[l_index][:,0],pts[l_index][:,1],pts[l_index][:,2])
-print( f'processing tiem (module6) {time.time()-start_time:.2f} second')
+#print( f'processing tiem (module6) {time.time()-start_time:.2f} second')

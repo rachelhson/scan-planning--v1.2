@@ -2,9 +2,9 @@
 """ Simulate low score points"""
 
 from module2 import pts, pt_normal
-from module4_ptcloud import final_psl
-from module7_ptcloud import score_,mu,std
-from module6_ptcloud import satisfied ## contains for each psl : satisfied point cloud 
+from module4 import final_psl
+from module7 import score_,mu,std
+from module6 import satisfied ## contains for each psl : satisfied point cloud
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np

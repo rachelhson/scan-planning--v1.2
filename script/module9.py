@@ -1,9 +1,8 @@
 """11-29-2020 Find next best view"""
 from module2 import pts
-from module4_ptcloud import final_psl
-from module4_ptcloud import final_psl, dist_2d
-from module6_ptcloud import satisfied, distance,visible
-from module8_ptcloud import max_lowpoint_index
+from module4 import final_psl, dist_2d
+from module6 import satisfied, distance,visible
+from module8 import max_lowpoint_index
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D

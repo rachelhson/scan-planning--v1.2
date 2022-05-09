@@ -1,6 +1,6 @@
 import numpy as np
 import open3d as o3d
-
+"================================================================"
 ## Input - model and quality requirement
 model = 'exp1_str.ply'
 qr = 5 # mm  quality requirement
@@ -9,12 +9,15 @@ qr = 5 # mm  quality requirement
 qr_hr= qr
 qr_vr= qr*2
 
+## for point cloud sampling for object
+sampling_interval_factor = 2
+
 #if the site is limited
 d_min = 1000 #mm
 d_site = 1500 #mm
 h_site = 1600 #mm
 h_min = 1200 #mm
-
+"================================================================"
 h_mid = (h_min+h_site)/2
 
 # Bounding Box size of the Object
