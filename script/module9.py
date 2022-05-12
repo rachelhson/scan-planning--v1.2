@@ -89,7 +89,13 @@ while dist_to_first > 2.5:
     final_scanplan.append(next_scan)
     final_scanplan_index.append(next_index)
 ax.scatter(pts[:, 0], pts[:, 1], pts[:, 2], color='grey')
+ax.grid(False)
+plt.axis('off')
 plt.show()
 print(f'final_scanplan : {final_scanplan}')
 print(f'final_scanplan : {final_scanplan_index}')
 print( f'processing tiem (module9) {time.time()-start_time:.2f} second')
+with open('final_scanplan.txt', 'w') as f:
+    for item in final_scanplan:
+        f.write("%s\n" % item)
+    f.close()
