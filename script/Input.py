@@ -15,8 +15,8 @@ sampling_interval_factor = 2
 #if the site is limited
 d_min = 1000 #mm
 d_site = 1500 #mm
-h_site = 1600 #mm
-h_min = 1200 #mm
+h_site = 1200 #mm # Jackal
+h_min = 870 #mm
 "================================================================"
 h_mid = (h_min+h_site)/2
 
