@@ -7,7 +7,7 @@
 - update your pip `python -m pip install --upgrade --user pip`
 - install open3d `pip3 install --user open3d==0.13.0
 
-1. input.py : User input handles only this script 
+1. input.py : User input handles only this script => no further modules need to be changed 
 ![img.png](img.png)
 2. module1.py : choosing the scan `resolution`
 ![img_1.png](img_1.png)
