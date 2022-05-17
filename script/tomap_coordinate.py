@@ -1,8 +1,9 @@
 import numpy as np
 from module2 import pt_normal
 from module9 import final_scanplan, final_scanplan_index
+import matplotlib.pyplot as plt
 #final_scanplan = [[1,1,0],[2,1,1]]
-
+fig, ax = plt.subplots()
 # -----> y
 # down x
 
@@ -13,21 +14,21 @@ def cosine(theta): #theta degree
 def sine(theta): #theta degree
     sin = np.sin(np.deg2rad(theta))
     return sin
+
 """ change map => change origin"""
-origin = [-0.381, 5.62]
+origin = [-2.265, -0.915]
 matrix = [[cosine(90), -sine(90),origin[0]],
           [sine(90), cosine(90), origin[1]],
           [0,                0,         1]]
 
 direction_matrix = [[cosine(180), -sine(180)],
                     [sine(180), cosine(180)]]
-
-def get_theta(orientation, x ): # between normalvector and global y axis
-    global_yaxis = [origin[0]-x,0] # map  x axis up
+ax.scatter(origin[0], origin[1])
+def get_theta(orientation): # between normal vector and ROBOT FRAME Y AXIS
+    global_yaxis = [0,1] # map  x axis up
     theta_rad = np.arccos(np.dot(global_yaxis,orientation)/(np.linalg.norm(global_yaxis)*np.linalg.norm(orientation)))
     theta_deg = np.rad2deg(theta_rad)
     return theta_deg
-
 
 def convert_theta_to_quaternion(theta):
     z = cosine(theta/2)
@@ -59,36 +60,13 @@ for a,scan_pose in enumerate(final_scanplan):
     print(map_coord[:2])
     print(f'actuator_extend_time:')
     print(actuator_h[a])
-
+    ax.scatter(map_coord[0],map_coord[1])
     """ compute the angle between yaxis to scantoorigin"""
     vector_scan_to_origin = origin - map_coord[:2]
-    theta = get_theta(vector_scan_to_origin, map_coord[0])
-    print(f'direction :')
-    print(vector_scan_to_origin)
-    if vector_scan_to_origin[0] <0 and vector_scan_to_origin[1]<0:
-        print(f"left {theta}")
-        z,w = convert_theta_to_quaternion(theta)
-        print(f"quaternion :"
-              f"z :{z}"
-              f"w :{w}")
-    elif vector_scan_to_origin[0] <0 and vector_scan_to_origin[1]>0:
-        print(f"right {theta+180}")
-        z,w = convert_theta_to_quaternion(theta)
-        print(f"quaternion :"
-              f"z :{z}"
-              f"w :{w}")
-    elif vector_scan_to_origin[0]>0 and vector_scan_to_origin[1]>0:
-        print(f"right {theta+180}")
-        z,w = convert_theta_to_quaternion(theta)
-        print(f"quaternion :"
-              f"z :{z}"
-              f"w :{w}")
-    elif vector_scan_to_origin[0]>0 and vector_scan_to_origin[1]<0:
-        print(f"left {theta}")
-        z,w = convert_theta_to_quaternion(theta)
-        print(f"quaternion :"
-              f"z :{z}"
-              f"w :{w}")
+    theta = get_theta(vector_scan_to_origin) # with respect to robot y axis frame
+    print(f"theta: {theta}")
+
+plt.show()
 
 
 
