@@ -2,7 +2,7 @@ import numpy as np
 import open3d as o3d
 "================================================================"
 ## Input - model and quality requirement
-model = 'exp1_str.ply'
+model = 'exp2.ply'
 qr = 5 # mm  quality requirement
 
 ## quality specification
