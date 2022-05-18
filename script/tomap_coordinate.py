@@ -16,7 +16,7 @@ def sine(theta): #theta degree
     return sin
 
 """ change map => change origin"""
-origin = [-2.265, -0.915]
+origin = [8.4, 8.25]
 matrix = [[cosine(90), -sine(90),origin[0]],
           [sine(90), cosine(90), origin[1]],
           [0,                0,         1]]
@@ -24,6 +24,7 @@ matrix = [[cosine(90), -sine(90),origin[0]],
 direction_matrix = [[cosine(180), -sine(180)],
                     [sine(180), cosine(180)]]
 ax.scatter(origin[0], origin[1])
+## this theta doesnt count direction from the yaxis
 def get_theta(orientation): # between normal vector and ROBOT FRAME Y AXIS
     global_yaxis = [0,1] # map  x axis up
     theta_rad = np.arccos(np.dot(global_yaxis,orientation)/(np.linalg.norm(global_yaxis)*np.linalg.norm(orientation)))
@@ -64,8 +65,18 @@ for a,scan_pose in enumerate(final_scanplan):
     """ compute the angle between yaxis to scantoorigin"""
     vector_scan_to_origin = origin - map_coord[:2]
     theta = get_theta(vector_scan_to_origin) # with respect to robot y axis frame
-    print(f"theta: {theta}")
+    """calculate direction"""
+    if vector_scan_to_origin[0] >  0 :
+        print('RIGHT')
+        new_theta = theta
+    elif vector_scan_to_origin[0] < 0:
+        print('LEFT')
+        new_theta = 360-theta
+    print(f"theta: {new_theta}")
 
+    """ change theta to q, w"""
+    z,w = convert_theta_to_quaternion(theta)
+    print(f"z:{z}, w:{w}")
 plt.show()
 
 
