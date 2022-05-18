@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import module6
 """ Input """
+origin = [8.4, 8.25]
 final_psl = [[10.03995104,9.48401606, 0.8],
              [7.93262523, 10.11863157,0.8 ],
              [6.48940344, 8.45147331,1.2],
@@ -13,7 +14,6 @@ final_psl = [[10.03995104,9.48401606, 0.8],
             [10.29668756,  8.86510563,1.2]]
 
 """get satisfied"""
-
 satisfied ={}
 visible = {}
 
@@ -28,8 +28,8 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 for a,i in enumerate(final_psl):
     # get omcodemce angle
-    pslx = final_psl[a][0]
-    psly = final_psl[a][1]
+    pslx = final_psl[a][0]-origin[0]
+    psly = final_psl[a][1]-origin[1]
     pslz = final_psl[a][2]
 
     rayx = pslx-scx
@@ -45,7 +45,7 @@ for a,i in enumerate(final_psl):
     print(ia)
     dist2_ = module6.distance_2d(rayx, rayy)
     v_range = module6.distance_2d(pslx, psly)
-    nonocclu_index = np.where((ia < 90))[0]
+    nonocclu_index = np.where((ia < 90) & (dist2_ < v_range))[0]
     visible[a]=nonocclu_index
     ax.scatter(pts[nonocclu_index][:,0],pts[nonocclu_index][:,1],pts[nonocclu_index][:,2],color='green')
 #ax.scatter(pts[:,0], pts[:,1], pts[:,2], color='grey')
