@@ -63,7 +63,7 @@ lowscore_count = {}
 for psl in satisfied.keys():
      visible_points = satisfied[psl]
      a = [x for x in visible_points if x in not_visible]
-     print(a)
+     print(psl)
      lowscore_length = len(a)
      lowscore_count[psl]=lowscore_length
 values = list(lowscore_count.values())
