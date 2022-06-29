@@ -97,11 +97,7 @@ print(f'final_scanplan : {final_scanplan}')
 print(f'final_scanplan : {final_scanplan_index}')
 print( f'processing tiem (module9) {time.time()-start_time:.2f} second')
 
-## wirte csv file for final_scanplan & index
-with open('final_scanplan.csv', 'w') as f:
-    for count,item in enumerate(final_scanplan):
-        #create csv writer
-        writer = csv.writer(f)
-        # write a row to csv file
-        writer.writerow([item,final_scanplan_index[count]])
-    f.close()
+## wirte csv file for final_scanplan
+np.savetxt('final_scanplan.csv',np.array(final_scanplan),delimiter=',')
+
+
