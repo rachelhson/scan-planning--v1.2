@@ -1,20 +1,22 @@
 """ module 10 only for robotics operation """
 import numpy as np
 
-with open('final_scanplan.txt') as f:
-    final_scanplan = f.readlines()
-
+with open('final_scanplan.csv','r') as f:
+    final_scanplan = csv.reader(f)
+print(final_scanplan)
 """ change to robot's available height """
 height = np.vstack(final_scanplan)[:,2]
 actuator_h = []
-for h in height:
+for count,h in enumerate(height):
     if h<1.0:
-        actuator_extend_time = 0 #25+62.3cm = 87.3 cm
-        actuator_h.append([actuator_extend_time])
+        # actuator height
+        actuator_height = 0.873#m
     elif h > 1.0 and h < 1.2:
-        actuator_extend_time = 5 # 77.25+25 cm = 102.25 cm
-        actuator_h.append([actuator_extend_time])
+        #actuator height
+        actuator_height = 1.0225#m
     else:
-        actuator_extend_time = 10 # 92.5+25 cm = 117.5 cm
-        actuator_h.append([actuator_extend_time])
+        actuator_height = 1.175#m
+    final_scanplan[count][2] = actuator_height
 
+print(f"changed final_scanplan:")
+print(final_scanplan)

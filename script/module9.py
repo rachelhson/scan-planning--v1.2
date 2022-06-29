@@ -3,6 +3,7 @@ from module2 import pts
 from module4 import final_psl, dist_2d
 from module6 import satisfied, distance,visible
 from module8 import max_lowpoint_index
+import csv
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -96,10 +97,11 @@ print(f'final_scanplan : {final_scanplan}')
 print(f'final_scanplan : {final_scanplan_index}')
 print( f'processing tiem (module9) {time.time()-start_time:.2f} second')
 
-## wirte text file for final_scanplan & index
-with open('final_scanplan.txt', 'w') as f:
-    for item in final_scanplan:
-        f.write("%s\n" % item)
-    for index in final_scanplan_index:
-        f.write("%s\n" % index)
+## wirte csv file for final_scanplan & index
+with open('final_scanplan.csv', 'w') as f:
+    for count,item in enumerate(final_scanplan):
+        #create csv writer
+        writer = csv.writer(f)
+        # write a row to csv file
+        writer.writerow([item,final_scanplan_index[count]])
     f.close()
