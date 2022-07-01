@@ -19,5 +19,5 @@
    * counting number tells which `object point` is relatively easier to be captured.
 7. module8.py : compute `low_score_criteria` and find what object `points` are in `low_score_criteria`
 8. module9.py : choose the `first_scan` and then choose subsequent scan positions until it closes to the `first position`
-
+9. module10.py:
 

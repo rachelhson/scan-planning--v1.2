@@ -1,7 +1,7 @@
 from module2 import pts
-from module4_ptcloud import final_psl
-from module6_ptcloud import satisfied,visible
-from module9_ptcloud import final_scanplan, final_scanplan_index
+from module4 import final_psl
+from module6 import satisfied,visible
+from module9 import final_scanplan, final_scanplan_index
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -31,8 +31,8 @@ satisfied_ratio= len(set(np.concatenate(collect_all_satisfied_points)))/ len(pts
 satisfied_index = list(set(np.concatenate(collect_all_satisfied_points)))
 print(pts[satisfied_index][:,0])
 ## show satisfied area
-ax.scatter(pts[satisfied_index][:,0],pts[satisfied_index][:,1],pts[satisfied_index][:,2])
-plt.show()
+#ax.scatter(pts[satisfied_index][:,0],pts[satisfied_index][:,1],pts[satisfied_index][:,2])
+#lt.show()
 print( f'satisfied_ratio {satisfied_ratio:.2f} %')
 print( f'processing tiem (show_qualified) {time.time()-start_time:.2f} second')
 
