@@ -27,9 +27,9 @@ nz = pt_normal[:,2]
 
 for a,i in enumerate(final_psl_):
     # get omcodemce angle
-    pslx = final_psl[a][0]
-    psly = final_psl[a][1]
-    pslz = final_psl[a][2]
+    pslx = final_psl_[a][0]
+    psly = final_psl_[a][1]
+    pslz = final_psl_[a][2]
 
     rayx = pslx-scx
     rayy = psly-scy
