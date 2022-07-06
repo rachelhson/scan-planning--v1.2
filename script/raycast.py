@@ -9,11 +9,11 @@ import numpy as np
 mesh = o3d.io.read_triangle_mesh(model)
 mesh = o3d.t.geometry.TriangleMesh.from_legacy(mesh)
 print("mesh")
-print(mesh)
+print(mesh.triangle)
 
 scene = o3d.t.geometry.RaycastingScene()
 mesh_id = scene.add_triangles(mesh)
-print(mesh_id)
+
 
 #casting rays
 # The first ray starts at (0.5,0.5,10) and has direction (0,0,-1).
@@ -39,9 +39,16 @@ print(ans['t_hit'].numpy(), ans['primitive_ids'].numpy())
 
 
 hit = ans['t_hit'].isfinite()
+non_hit = ans['t_hit'].isinf()
+
+# calculate cast points
 points = rays_data[hit][:,:3] + rays_data[hit][:,3:]*ans['t_hit'][hit].reshape((-1,1))
+non_hitpoints = rays_data[non_hit][:,:3] + rays_data[non_hit][:,3:]*ans['t_hit'][non_hit].reshape((-1,1))
+#print(points)
 pcd = o3d.t.geometry.PointCloud(points)
-print(pcd)
+non_hit_pcd = o3d.t.geometry.PointCloud(points)
+#print(pcd)
 #o3d.visualization.draw_geometries([pcd.to_legacy()])
-o3d.io.write_point_cloud("simulated_ptcloud.pcd", pcd.to_legacy())
+o3d.io.write_point_cloud("../simulated_ptcloud/hit_ptcloud.pcd", pcd.to_legacy())
+o3d.io.write_point_cloud("../simulated_ptcloud/non_hit_ptcloud.pcd", non_hit_pcd.to_legacy())
 
