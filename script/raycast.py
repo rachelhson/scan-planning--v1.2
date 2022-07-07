@@ -5,15 +5,15 @@ from module10 import final_scanplan
 from module2 import pts
 import numpy as np
 # """ for our object """
-## read mesh
+# Load mesh and convert to open3d.t.geometry.TriangleMesh
 mesh = o3d.io.read_triangle_mesh(model)
+
 mesh = o3d.t.geometry.TriangleMesh.from_legacy(mesh)
-print("mesh")
-print(mesh.triangle)
+triangle_indices = mesh.triangle['indices']
+triangle_ids = np.arange(0,len(triangle_indices))
 
 scene = o3d.t.geometry.RaycastingScene()
 mesh_id = scene.add_triangles(mesh)
-
 
 #casting rays
 # The first ray starts at (0.5,0.5,10) and has direction (0,0,-1).
@@ -30,25 +30,26 @@ for a,i in enumerate(final_psl_):
     ray_data = np.hstack((starts, direction))
     rays.append(ray_data)
 rays = np.concatenate(rays)
+
 #print(rays)
 rays_data = o3d.core.Tensor(rays, dtype=o3d.core.Dtype.Float32)
-# #print(ray_data)
 ans = scene.cast_rays(rays_data)
 print(ans.keys())
-print(ans['t_hit'].numpy(), ans['primitive_ids'].numpy())
+"""
+'t_hit' distance to the intersection
+'geometry_ids' the geometry hit by the ray
+'primitive_ids' triangle index of the triangle that was hit 
+"""
 
+print(ans['primitive_ids'].numpy())
 
 hit = ans['t_hit'].isfinite()
-non_hit = ans['t_hit'].isinf()
-
 # calculate cast points
 points = rays_data[hit][:,:3] + rays_data[hit][:,3:]*ans['t_hit'][hit].reshape((-1,1))
-non_hitpoints = rays_data[non_hit][:,:3] + rays_data[non_hit][:,3:]*ans['t_hit'][non_hit].reshape((-1,1))
-#print(points)
 pcd = o3d.t.geometry.PointCloud(points)
-non_hit_pcd = o3d.t.geometry.PointCloud(points)
-#print(pcd)
-#o3d.visualization.draw_geometries([pcd.to_legacy()])
-o3d.io.write_point_cloud("../simulated_ptcloud/hit_ptcloud.pcd", pcd.to_legacy())
-o3d.io.write_point_cloud("../simulated_ptcloud/non_hit_ptcloud.pcd", non_hit_pcd.to_legacy())
 
+o3d.io.write_point_cloud("../simulated_ptcloud/hit_ptcloud.pcd", pcd.to_legacy())
+
+""" the area rays not hitted """
+non_hit = set(triangle_ids).difference(set(ans['primitive_ids'].numpy()))
+print(list(non_hit))

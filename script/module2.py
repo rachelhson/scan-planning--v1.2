@@ -50,7 +50,7 @@ print(f'after removing the bottom # of pts : {len(pts)}')
 #np.savetxt('../output/pt_normal.csv', pt_normal, delimiter=',')
 #o3d.visualization.draw_geometries([pcd])
 """statistics for spacing between sample point"""
-pcdfilename = "../output/downpcd.pcd"
+pcdfilename = "../simulated_ptcloud/pts.pcd"
 o3d.io.write_point_cloud(pcdfilename, downpcd)
 dist= o3d.geometry.PointCloud.compute_nearest_neighbor_distance(downpcd)
 mu = np.average(dist)
